@@ -1,0 +1,11 @@
+udo: required
+
+services:
+  - docker
+
+env:
+  - VERSION=2.12.1
+
+script:
+  - docker build --tag image:test ${VERSION}
+  - bash tests/scala.sh image:test
