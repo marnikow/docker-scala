@@ -12,3 +12,6 @@ WORKDIR /tmp
 RUN wget --quiet "http://www.scala-lang.org/files/archive/${SCALA_PACKAGE}" &&     dpkg --install ${SCALA_PACKAGE}
 
 RUN rm -rf /tmp/*
+
+VOLUME /app
+WORKDIR /app
