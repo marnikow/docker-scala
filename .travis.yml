@@ -4,7 +4,7 @@ services:
   - docker
 
 env:
-  - VERSION=2.12.1
+  - VERSION=2.11.8
 
 script:
   - docker build --tag image:test ${VERSION}
