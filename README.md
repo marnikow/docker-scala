@@ -9,9 +9,9 @@ This repository contains the build files to generate Docker images containing a 
 ### Examples
 
 ```sh
-$ docker run --rm --tty --interactive --volume $PWD:/app sourceworks/scala scalac
+$ docker run --rm --tty --interactive --volume $PWD:/app sourceworks/scala <command> <option>
 ```
 
-```sh
-$ docker run --rm --tty --interactive --volume $PWD:/app sourceworks/scala scala
-```
+where _<command>_ is one of _scala_, _scalac_, _scaladoc_, or _scalap_
+and _<options>_ are the command-line options accepted by the command
+being uded.
