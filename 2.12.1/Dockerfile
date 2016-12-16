@@ -9,7 +9,11 @@ ENV SCALA_PACKAGE scala-${SCALA_VERSION}.deb
 WORKDIR /tmp
 
 # scala installation
-RUN wget --quiet "http://www.scala-lang.org/files/archive/${SCALA_PACKAGE}" &&     dpkg --install ${SCALA_PACKAGE}
+RUN wget --quiet "http://www.scala-lang.org/files/archive/${SCALA_PACKAGE}" && \
+    dpkg --install ${SCALA_PACKAGE}
+
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN rm -rf /tmp/*
 
