@@ -25,7 +25,8 @@ RUN wget --quiet "http://www.scala-lang.org/files/archive/${SCALA_PACKAGE}" && \
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823 && \
     echo "deb https://dl.bintray.com/sbt/debian /" > /etc/apt/sources.list.d/sbt.list && \
     apt-get update --yes && \
-    apt-get install --yes --no-install-recommends sbt
+    apt-get install --yes --no-install-recommends sbt && \
+    sbt -batch
 
 
 ### Cleaning
