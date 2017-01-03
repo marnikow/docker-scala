@@ -3,17 +3,15 @@
 [![Build Status](https://travis-ci.org/sourceworks/docker-scala.svg?branch=master)](https://travis-ci.org/sourceworks/docker-scala) [![DockerHub](https://img.shields.io/badge/docker-available-blue.svg)](https://hub.docker.com/u/sourceworks/)
 
 This repository contains the build files to generate Docker images
-containing the Scala environment and the SBT tool.
+that provide the Scala environment and the SBT tool. The scala
+environment is currently composed by the commands _scala_, _scalac_, and
+_scaladoc_.
 
-## How to use this image
-
-### Examples
+This image may be used in a standalone fashion by defining the following
+aliases:
 
 ```sh
-$ docker run --rm --tty --interactive --volume $PWD:/app sourceworks/scala <command> <option>
+$ alias scala='docker run --rm --tty --interactive --volume $PWD:/app sourceworks/scala scala'
+$ alias scalac='docker run --rm --tty --interactive --volume $PWD:/app sourceworks/scala scalac'
+$ alias scaladoc='docker run --rm --tty --interactive --volume $PWD:/app sourceworks/scala scaladoc'
 ```
-
-where
-  __command__ is one of _scala_, _scalac_, _scaladoc_, or _scalap_
-  and
-   __options__ are the command-line options accepted by the command being used.
