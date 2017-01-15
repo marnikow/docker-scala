@@ -4,8 +4,11 @@ services:
   - docker
 
 env:
+  - VERSION=2.12.1
   - VERSION=2.11.8
+  - VERSION=2.10.6
 
 script:
   - docker build --tag image:test ${VERSION}
   - bash tests/scala.sh image:test
+  - bash tests/scalac.sh image:test
