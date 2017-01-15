@@ -14,48 +14,22 @@ do
   mkdir "$version"
 
   cat > "$version/Dockerfile" <<-END
-# Generated automatically by generation script
+# Generated automatically by update.sh
 # Do no edit this file
 
-FROM openjdk:8-jdk
+FROM openjdk:8-alpine
 
-WORKDIR /tmp
+# The bash shell is require by Scala utilities
+RUN apk add --no-cache bash
 
+# Install build dependencies
+RUN apk add --no-cache --virtual=.dependencies tar
 
-### Install Requirements
-ENV REQUIREMENTS apt-transport-https
+RUN wget -O- "http://downloads.lightbend.com/scala/$version/scala-$version.tgz" \\
+    |  tar xzf - -C /usr/local --strip-components=1
 
-RUN apt-get update --yes && \\
-    apt-get install --yes --no-install-recommends \${REQUIREMENTS}
-
-
-### Scala Installation
-ENV SCALA_VERSION ${version}
-ENV SCALA_PACKAGE scala-\${SCALA_VERSION}.deb
-
-RUN wget --quiet "http://www.scala-lang.org/files/archive/\${SCALA_PACKAGE}" && \\
-    dpkg --install \${SCALA_PACKAGE}
-
-
-### SBT Installation
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823 && \\
-    echo "deb https://dl.bintray.com/sbt/debian /" > /etc/apt/sources.list.d/sbt.list && \\
-    apt-get update --yes && \\
-    apt-get install --yes --no-install-recommends sbt && \\
-    sbt -batch
-
-
-### Cleaning
-RUN rm /etc/apt/sources.list.d/sbt.list && \\
-    apt-get purge --yes \${REQUIREMENTS} && \\
-    apt-get clean && \\
-    rm -rf /var/lib/apt/lists/*
-
-RUN rm -rf /tmp/*
-
-
-VOLUME /app
-WORKDIR /app
+# Remove build dependencies
+RUN apk del --no-cache .dependencies
 END
 
 done
