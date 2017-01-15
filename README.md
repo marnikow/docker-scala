@@ -1,6 +1,5 @@
 # The [`bigtruedata/scala`](https://hub.docker.com/r/bigtruedata/scala/) image
 
-[![DockerHub](https://img.shields.io/badge/docker-available-blue.svg)](https://hub.docker.com/u/sourceworks/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/bigtruedata/scala.svg)](https://hub.docker.com/r/bigtruedata/scala/)
 [![Docker Stars](https://img.shields.io/docker/stars/bigtruedata/scala.svg)](https://hub.docker.com/r/bigtruedata/scala/)
 [![Build Status](https://travis-ci.org/bigtruedata/docker-scala.svg?branch=master)](https://travis-ci.org/bigtruedata/docker-scala)
