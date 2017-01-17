@@ -19,7 +19,7 @@ do
 
 FROM openjdk:8-alpine
 
-# The bash shell is require by Scala utilities
+# The bash shell is required by Scala utilities
 RUN apk add --no-cache bash
 
 # Install build dependencies
