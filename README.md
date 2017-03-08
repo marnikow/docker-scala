@@ -20,3 +20,6 @@ alias scalac='docker run --rm --tty --interactive --volume $PWD:/app bigtruedata
 alias scalap='docker run --rm --tty --interactive --volume $PWD:/app bigtruedata/scala scalap'
 alias scaladoc='docker run --rm --tty --interactive --volume $PWD:/app bigtruedata/scala scaladoc'
 ```
+
+# Versions
+This image is based on the [`openjdk:8-alpine`](https://hub.docker.com/_/openjdk/) to provide the Java installation required by the Scala environment. The different versions of this image correspond tho the released versions of Scatala that can be downloaded form thee [Scala downloads](http://scala-lang.org/download/all.html) website.
