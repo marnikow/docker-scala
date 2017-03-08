@@ -30,6 +30,9 @@ RUN wget -O- "http://downloads.lightbend.com/scala/$version/scala-$version.tgz" 
 
 # Remove build dependencies
 RUN apk del --no-cache .dependencies
+
+VOLUME /app
+WORKDIR /app
 END
 
 done
