@@ -1,5 +1,7 @@
 # The [`bigtruedata/scala`](https://hub.docker.com/r/bigtruedata/scala/) image
 
+[![Latest Version](https://images.microbadger.com/badges/version/bigtruedata/scala.svg)](https://microbadger.com/images/bigtruedata/scala)
+[![Image Layers](https://images.microbadger.com/badges/image/bigtruedata/scala.svg)](https://microbadger.com/images/bigtruedata/scala)
 [![Docker Pulls](https://img.shields.io/docker/pulls/bigtruedata/scala.svg)](https://hub.docker.com/r/bigtruedata/scala/)
 [![Docker Stars](https://img.shields.io/docker/stars/bigtruedata/scala.svg)](https://hub.docker.com/r/bigtruedata/scala/)
 [![Build Status](https://travis-ci.org/bigtruedata/docker-scala.svg?branch=master)](https://travis-ci.org/bigtruedata/docker-scala)
