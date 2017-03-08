@@ -2,8 +2,8 @@
 
 # Supported tags and respective `Dockerfile` links
 - [`2.12.1`,`2.12`,`latest`(2.12.1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.1/Dockerfile)
-- [`2.11.8`,`2.11`,(2.11.8/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.8/Dockerfile)
-- [`2.10.6`,`2.10`,(2.10.6/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/Dockerfile)
+- [`2.11.8`,`2.11`(2.11.8/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.8/Dockerfile)
+- [`2.10.6`,`2.10`(2.10.6/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/Dockerfile)
 
 # Quick Start
 This image provides an specific version of the Scala environment. It consists of the Scala REPL (_scala_), the Scala compiler (_scalac_), the Scala class file decoder (_scalap_), and the Scala documentation generation tool (_scaladoc_). If not specified any command to execute the `bigtruedata/scala` image (as specified int the follogin example), the Scala REPL will be launched.
