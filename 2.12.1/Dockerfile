@@ -3,7 +3,7 @@
 
 FROM openjdk:8-alpine
 
-# The bash shell is require by Scala utilities
+# The bash shell is required by Scala utilities
 RUN apk add --no-cache bash
 
 # Install build dependencies
@@ -14,3 +14,6 @@ RUN wget -O- "http://downloads.lightbend.com/scala/2.12.1/scala-2.12.1.tgz" \
 
 # Remove build dependencies
 RUN apk del --no-cache .dependencies
+
+VOLUME /app
+WORKDIR /app
