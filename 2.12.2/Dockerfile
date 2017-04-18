@@ -3,6 +3,9 @@
 
 FROM openjdk:8-alpine
 
+# Patch to generate images in Wercker's pipelines.
+COPY env /usr/local/bin/env
+
 # The bash shell is required by Scala utilities
 RUN apk add --no-cache bash
 
@@ -10,7 +13,7 @@ RUN apk add --no-cache bash
 RUN apk add --no-cache --virtual=.dependencies tar
 
 RUN wget -O- "http://downloads.lightbend.com/scala/2.12.2/scala-2.12.2.tgz" \
-    |  tar xzf - -C /usr/local --strip-components=1
+    | tar xzf - -C /usr/local --strip-components=1
 
 # Remove build dependencies
 RUN apk del --no-cache .dependencies
