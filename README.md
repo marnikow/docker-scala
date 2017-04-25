@@ -7,7 +7,9 @@
 - [`2.11.8`,`2.11`(2.11.8/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.8/Dockerfile)
 - [`2.10.6`,`2.10`(2.10.6/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/Dockerfile)
 
-![logo](https://github.com/bigtruedata/docker-scala/blob/master/logo.png)
+---
+
+![logo](https://raw.githubusercontent.com/bigtruedata/docker-scala/master/logo.png)
 
 > [wikipedia.org/wiki/Scala_(programming_language)](https://en.wikipedia.org/wiki/Scala_(programming_language))
 
