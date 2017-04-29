@@ -11,7 +11,7 @@
 
 ![logo](https://raw.githubusercontent.com/bigtruedata/docker-scala/master/logo.png)
 
-> [wikipedia.org/wiki/Scala_(programming_language)](https://en.wikipedia.org/wiki/Scala_(programming_language))
+> [scala-lang.org](http://scala-lang.org/)
 
 # Quick Start
 This image provides an specific version of the Scala environment. It consists of the Scala REPL (_scala_), the Scala compiler (_scalac_), the Scala class file decoder (_scalap_), and the Scala documentation generation tool (_scaladoc_). If not specified any command to execute the `bigtruedata/scala` image (as specified in the following example), the Scala REPL will be launched.
