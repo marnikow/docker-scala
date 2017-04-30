@@ -1,6 +1,12 @@
-[![dockeri.co](http://dockeri.co/image/bigtruedata/scala)](https://hub.docker.com/r/bigtruedata/scala/)
+![Docker Automated buil](https://img.shields.io/docker/automated/bigtruedata/scala.svg?style=plastic)
+![Docker Build Statu](https://img.shields.io/docker/build/bigtruedata/scala.svg?style=plastic)
+![Docker Pulls](https://img.shields.io/docker/pulls/bigtruedata/scala.svg?style=plastic)
+![Docker Stars](https://img.shields.io/docker/stars/bigtruedata/scala.svg?style=plastic)
+![license](https://img.shields.io/github/license/bigtruedata/docker-scala.svg?style=plastic)
 
-# Supported tags and respective `Dockerfile` links
+# [Scala Docker Image](https://hub.docker.com/r/bigtruedata/scala/)
+
+## Supported tags and respective `Dockerfile` links
 - [`2.13.0-M1`(2.13.0-M1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.13.0-M1/Dockerfile)
 - [`2.12.2`,`2.12`,`latest`(2.12.2/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.2/Dockerfile)
 - [`2.12.1`(2.12.1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.1/Dockerfile)
@@ -13,7 +19,7 @@
 
 > [scala-lang.org](http://scala-lang.org/)
 
-# Quick Start
+## Quick Start
 This image provides an specific version of the Scala environment. It consists of the Scala REPL (_scala_), the Scala compiler (_scalac_), the Scala class file decoder (_scalap_), and the Scala documentation generation tool (_scaladoc_). If not specified any command to execute the `bigtruedata/scala` image (as specified in the following example), the Scala REPL will be launched.
 
 ```sh
@@ -29,5 +35,5 @@ alias scalap='docker run --rm --tty --interactive --volume $PWD:/app bigtruedata
 alias scaladoc='docker run --rm --tty --interactive --volume $PWD:/app bigtruedata/scala scaladoc'
 ```
 
-# Versions
+## Versions
 This image is based on the [`openjdk:8-alpine`](https://hub.docker.com/_/openjdk/) image to provide the Java installation required by the Scala environment. The different versions of this image correspond tho the released versions of Scala that can be downloaded from the [Scala downloads](http://scala-lang.org/download/all.html) website.
