@@ -10,7 +10,8 @@
 - [`2.13.0-M1`(2.13.0-M1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.13.0-M1/Dockerfile)
 - [`2.12.2`,`2.12`,`latest`(2.12.2/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.2/Dockerfile)
 - [`2.12.1`(2.12.1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.1/Dockerfile)
-- [`2.11.8`,`2.11`(2.11.8/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.8/Dockerfile)
+- [`2.11.11`,`2.11`(2.11.11/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.11/Dockerfile)
+- [`2.11.8`(2.11.8/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.8/Dockerfile)
 - [`2.10.6`,`2.10`(2.10.6/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/Dockerfile)
 
 ---
