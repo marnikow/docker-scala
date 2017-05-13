@@ -7,7 +7,6 @@
 # [Scala Docker Image](https://hub.docker.com/r/bigtruedata/scala/)
 
 ## Supported tags and respective `Dockerfile` links
-- [`2.13.0-M1`(2.13.0-M1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.13.0-M1/Dockerfile)
 - [`2.12.2`,`2.12`,`latest`(2.12.2/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.2/Dockerfile)
 - [`2.12.1`(2.12.1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.1/Dockerfile)
 - [`2.11.11`,`2.11`(2.11.11/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.11/Dockerfile)
