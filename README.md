@@ -1,3 +1,4 @@
+[![Travis](https://img.shields.io/travis/bigtruedata/docker-scala.svg?style=plastic)](https://travis-ci.org/bigtruedata/docker-scala)
 ![Docker Automated buil](https://img.shields.io/docker/automated/bigtruedata/scala.svg?style=plastic)
 ![Docker Build Statu](https://img.shields.io/docker/build/bigtruedata/scala.svg?style=plastic)
 ![Docker Pulls](https://img.shields.io/docker/pulls/bigtruedata/scala.svg?style=plastic)
