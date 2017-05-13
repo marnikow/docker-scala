@@ -1,9 +1,9 @@
 [![Travis](https://img.shields.io/travis/bigtruedata/docker-scala.svg?style=plastic)](https://travis-ci.org/bigtruedata/docker-scala)
-[![Docker Automated build](https://img.shields.io/docker/automated/bigtruedata/scala.svg?style=plastic)()
-[![Docker Build Status](https://img.shields.io/docker/build/bigtruedata/scala.svg?style=plastic)()
-[![Docker Pulls](https://img.shields.io/docker/pulls/bigtruedata/scala.svg?style=plastic)()
-[![Docker Stars](https://img.shields.io/docker/stars/bigtruedata/scala.svg?style=plastic)()
-[![license](https://img.shields.io/github/license/bigtruedata/docker-scala.svg?style=plastic)(https://raw.githubusercontent.com/bigtruedata/docker-scala/blob/master/LICENSE)
+[![Docker Automated build](https://img.shields.io/docker/automated/bigtruedata/scala.svg?style=plastic)]()
+[![Docker Build Status](https://img.shields.io/docker/build/bigtruedata/scala.svg?style=plastic)]()
+[![Docker Pulls](https://img.shields.io/docker/pulls/bigtruedata/scala.svg?style=plastic)]()
+[![Docker Stars](https://img.shields.io/docker/stars/bigtruedata/scala.svg?style=plastic)]()
+[![license](https://img.shields.io/github/license/bigtruedata/docker-scala.svg?style=plastic)](https://raw.githubusercontent.com/bigtruedata/docker-scala/blob/master/LICENSE)
 
 # [Scala Docker Image](https://hub.docker.com/r/bigtruedata/scala/)
 
