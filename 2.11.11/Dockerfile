@@ -10,7 +10,7 @@ COPY env /usr/local/bin/env
 RUN apk add --no-cache bash
 
 # Install build dependencies
-RUN apk add --no-cache --virtual=.dependencies tar
+RUN apk add --no-cache --virtual=.dependencies tar wget
 
 RUN wget -O- "http://downloads.lightbend.com/scala/2.11.11/scala-2.11.11.tgz" \
     | tar xzf - -C /usr/local --strip-components=1
