@@ -5,9 +5,13 @@ set -eo pipefail
 declare -a versions=(
   2.12.2
   2.12.1
+  2.12.0
   2.11.11
+  2.11.10
+  2.11.9
   2.11.8
   2.10.6
+  2.10.5
 )
 
 for version in "${versions[@]}"
