@@ -10,9 +10,13 @@
 ## Supported tags and respective `Dockerfile` links
 - [`2.12.2`,`2.12`,`latest`(2.12.2/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.2/Dockerfile)
 - [`2.12.1`(2.12.1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.1/Dockerfile)
+- [`2.12.0`(2.12.0/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.0/Dockerfile)
 - [`2.11.11`,`2.11`(2.11.11/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.11/Dockerfile)
+- [`2.11.10`(2.11.10/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.10/Dockerfile)
+- [`2.11.9`(2.11.9/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.9/Dockerfile)
 - [`2.11.8`(2.11.8/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.8/Dockerfile)
 - [`2.10.6`,`2.10`(2.10.6/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/Dockerfile)
+- [`2.10.5`(2.10.5/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.5/Dockerfile)
 
 ---
 
