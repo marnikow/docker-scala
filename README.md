@@ -1,8 +1,8 @@
-[![Travis Status](https://img.shields.io/travis/bigtruedata/docker-scala.svg?style=plastic)](https://travis-ci.org/bigtruedata/docker-scala/builds)
 [![Docker Automated build](https://img.shields.io/docker/automated/bigtruedata/scala.svg?style=plastic)](https://hub.docker.com/r/bigtruedata/scala/)
 [![Docker Build Status](https://img.shields.io/docker/build/bigtruedata/scala.svg?style=plastic)](https://hub.docker.com/r/bigtruedata/scala/builds/)
 ![Docker Pulls](https://img.shields.io/docker/pulls/bigtruedata/scala.svg?style=plastic)
 ![Docker Stars](https://img.shields.io/docker/stars/bigtruedata/scala.svg?style=plastic)
+[![Travis Status](https://img.shields.io/travis/bigtruedata/docker-scala.svg?style=plastic)](https://travis-ci.org/bigtruedata/docker-scala/builds)
 [![License](https://img.shields.io/github/license/bigtruedata/docker-scala.svg?style=plastic)](https://raw.githubusercontent.com/bigtruedata/docker-scala/blob/master/LICENSE)
 
 # [Scala Docker Image](https://hub.docker.com/r/bigtruedata/scala/)
@@ -17,10 +17,12 @@
 - [`2.11.8`(2.11.8/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.8/Dockerfile)
 - [`2.10.6`,`2.10`(2.10.6/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/Dockerfile)
 - [`2.10.5`(2.10.5/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.5/Dockerfile)
+- [`2.10.4`(2.10.4/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.4/Dockerfile)
+- [`2.10.3`(2.10.3/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.3/Dockerfile)
 
 ---
 
-![logo](https://raw.githubusercontent.com/bigtruedata/docker-scala/master/logo.png)
+[![logo](https://raw.githubusercontent.com/bigtruedata/docker-scala/master/logo.png)](https://scala-lang.org)
 
 Scala is an acronym for “Scalable Language”. This means that Scala grows with you. You can play with it by typing one-line expressions and observing the results. But you can also rely on it for large mission critical systems.
 
