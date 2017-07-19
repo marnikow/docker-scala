@@ -22,14 +22,14 @@
 
 ---
 
-[![logo](https://raw.githubusercontent.com/bigtruedata/docker-scala/master/logo.png)](https://scala-lang.org)
+[![logo](https://raw.githubusercontent.com/bigtruedata/docker-scala/master/logo.png)](http://scala-lang.org)
 
 Scala is an acronym for “Scalable Language”. This means that Scala grows with you. You can play with it by typing one-line expressions and observing the results. But you can also rely on it for large mission critical systems.
 
-> [scala-lang.org](http://scala-lang.org/)
+Check the [Scala documentation](http://docs.scala-lang.org/) to get more information about the Scala programming language.
 
 ## Quick Start
-This image provides an specific version of the Scala environment. It consists of the Scala REPL (_scala_), the Scala compiler (_scalac_), the Scala class file decoder (_scalap_), and the Scala documentation generation tool (_scaladoc_). If not specified any command to execute the `bigtruedata/scala` image (as specified in the following example), the Scala REPL will be launched.
+This image provides an installation of the Scala environment. It consists on the Scala REPL (*scala*), the Scala compiler (*scalac*), the Scala class file decoder (*scalap*), and the Scala documentation generation tool (*scaladoc*). If not specified any command on `bigtruedata/scala` image execution (as specified in the following example), the Scala REPL will be launched.
 
 ```sh
 docker run --rm --tty --interactive bigtruedata/scala
@@ -45,4 +45,4 @@ alias scaladoc='docker run --rm --tty --interactive --volume $PWD:/app bigtrueda
 ```
 
 ## Versions
-This image is based on the [`openjdk:8-alpine`](https://hub.docker.com/_/openjdk/) image to provide the Java installation required by the Scala environment. The different versions of this image correspond tho the released versions of Scala that can be downloaded from the [Scala downloads](http://scala-lang.org/download/all.html) website.
+This image is based on the [`openjdk:8-alpine`](https://hub.docker.com/_/openjdk/) image to provide the Java installation required by the Scala environment. The different versions of this image correspond tho the released versions of Scala that can be downloaded from the [Scala downloads](http://scala-lang.org/download/all.html) website. New Scala versions are generated as long as they are released and become available on download website.
