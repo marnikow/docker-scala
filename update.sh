@@ -3,6 +3,7 @@
 set -eo pipefail
 
 declare -a versions=(
+  2.12.3
   2.12.2
   2.12.1
   2.12.0
