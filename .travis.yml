@@ -46,8 +46,6 @@ env:
   - VERSION=2.10.3/alpine
   - VERSION=2.10.2
   - VERSION=2.10.2/alpine
-  - VERSION=2.10.1
-  - VERSION=2.10.1/alpine
 
 script:
   - docker build --tag image:test ${VERSION}
