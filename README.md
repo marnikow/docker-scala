@@ -46,4 +46,4 @@ alias scaladoc='docker run --rm --tty --interactive --volume $PWD:/app bigtrueda
 ```
 
 ## Versions
-This image is based on the [`openjdk:8-alpine`](https://hub.docker.com/_/openjdk/) image to provide the Java installation required by the Scala environment. The different versions of this image correspond tho the released versions of Scala that can be downloaded from the [Scala downloads](http://scala-lang.org/download/all.html) website. New Scala versions are generated as long as they are released and become available on download website.
+This image is based on the [`openjdk:8`](https://hub.docker.com/_/openjdk/) image to provide the Java installation required by the Scala environment. The different versions of this image correspond tho the released versions of Scala that can be downloaded from the [Scala downloads](http://scala-lang.org/download/all.html) website. New Scala versions are generated as long as they are released and become available on download website.
