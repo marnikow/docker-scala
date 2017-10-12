@@ -16,7 +16,6 @@
 - [`2.12.1-alpine`(2.12.1/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.1/alpine/Dockerfile)
 - [`2.12.0`(2.12.0/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.0/Dockerfile)
 - [`2.12.0-alpine`(2.12.0/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.0/alpine/Dockerfile)
-
 - [`2.11.11`,`2.11`(2.11.11/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.11/Dockerfile)
 - [`2.11.11-alpine`,`2.11-alpine`(2.11.11/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.11/alpine/Dockerfile)
 - [`2.11.10`(2.11.10/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.10/Dockerfile)
@@ -41,7 +40,6 @@
 - [`2.11.1-alpine`(2.11.1/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.1/alpine/Dockerfile)
 - [`2.11.0`(2.11.0/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.0/Dockerfile)
 - [`2.11.0-alpine`(2.11.0/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.0/alpine/Dockerfile)
-
 - [`2.10.6`,`2.10`(2.10.6/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/Dockerfile)
 - [`2.10.6-alpine`,`2.10-alpine`(2.10.6/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/alpine/Dockerfile)
 - [`2.10.5`(2.10.5/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.5/Dockerfile)
