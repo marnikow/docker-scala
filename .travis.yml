@@ -4,8 +4,8 @@ services:
   - docker
 
 env:
-  - VERSION=2.12.3
-  - VERSION=2.12.3/alpine
+  - VERSION=2.12.4
+  - VERSION=2.12.4/alpine
   - VERSION=2.11.11
   - VERSION=2.11.11/alpine
   - VERSION=2.10.6
