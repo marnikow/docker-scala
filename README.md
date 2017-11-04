@@ -9,8 +9,8 @@
 # [Scala Docker Image](https://hub.docker.com/r/bigtruedata/scala/)
 
 ## Supported tags and respective `Dockerfile` links
-- [`2.12.3`,`2.12`,`latest`(2.12.3/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.3/Dockerfile)
-- [`2.12.3-alpine`,`2.12-alpine`,`alpine`(2.12.3/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.3/alpine/Dockerfile)
+- [`2.12.4`,`2.12`,`latest`(2.12.4/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.4/Dockerfile)
+- [`2.12.4-alpine`,`2.12-alpine`,`alpine`(2.12.4/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.4/alpine/Dockerfile)
 - [`2.11.11`,`2.11`(2.11.11/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.11/Dockerfile)
 - [`2.11.11-alpine`,`2.11-alpine`(2.11.11/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.11.11/alpine/Dockerfile)
 - [`2.10.6`,`2.10`(2.10.6/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.10.6/Dockerfile)
@@ -48,6 +48,8 @@ This image is based on the [`openjdk:8`](https://hub.docker.com/_/openjdk/) imag
 The different versions of this image correspond tho the released versions of Scala that can be downloaded from the [Scala downloads](http://scala-lang.org/download/all.html) website. New Scala versions are generated as long as they are released and become available on download website.
 
 ### Previous Versions
+- [`2.12.3`(2.12.3/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.3/Dockerfile)
+- [`2.12.3-alpine`(2.12.3/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.3/alpine/Dockerfile)
 - [`2.12.2`(2.12.2/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.2/Dockerfile)
 - [`2.12.2-alpine`(2.12.2/alpine/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.2/alpine/Dockerfile)
 - [`2.12.1`(2.12.1/Dockerfile)](https://github.com/bigtruedata/docker-scala/blob/master/2.12.1/Dockerfile)
