@@ -6,10 +6,10 @@ services:
 env:
   - VERSION=2.12.4
   - VERSION=2.12.4/alpine
-  - VERSION=2.11.11
-  - VERSION=2.11.11/alpine
-  - VERSION=2.10.6
-  - VERSION=2.10.6/alpine
+  - VERSION=2.11.12
+  - VERSION=2.11.12/alpine
+  - VERSION=2.10.7
+  - VERSION=2.10.7/alpine
 
 script:
   - docker build --tag image:test ${VERSION}
