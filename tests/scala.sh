@@ -15,7 +15,7 @@ fi
 echo -n "Scala does not execute an incorrect app... "
 docker run --rm --volume "$PWD/tests/resources:/resources" "$image" \
   scala "/resources/incorrectExecution.scala" 2>&1 /dev/null
-if [ "$?" -eq 1 ]; then
+if [ "$?" -ne 0 ]; then
   echo "success"
 else
   echo "failure"

@@ -12,7 +12,7 @@ RUN apk add --no-cache bash
 # Install build dependencies
 RUN apk add --no-cache --virtual=.dependencies tar wget
 
-RUN wget -O- "http://downloads.lightbend.com/scala/2.11.1/scala-2.11.1.tgz" \
+RUN wget -O- "https://scala-lang.org/files/archive/scala-2.11.1.tgz" \
     | tar xzf - -C /usr/local --strip-components=1
 
 # Remove build dependencies

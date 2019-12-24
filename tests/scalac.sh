@@ -15,7 +15,7 @@ fi
 echo -n "Scalac does not compile an incorrect class... "
 docker run --rm --volume `pwd`/tests/resources:/resources ${image} \
   scalac /resources/IncorrectCompilationClass.scala
-if [ "$?" -eq 1 ]; then
+if [ "$?" -ne 0 ]; then
   echo "success"
 else
   echo "failure"
