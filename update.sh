@@ -2,15 +2,20 @@
 
 set -eo pipefail
 
-declare -a versions="$(wget --timeout=5 -O - -q "https://scala-lang.org/download/all.html" | xmllint --html --xpath '//div[@class="inner-box"]' - 2>/dev/null | xmlstarlet sel -t -v 'div/div/a/text()' - | sed -e 's/Scala //')"
+DOCKER_ACC=marnikow
+DOCKER_REPO=scala
+DOCKER_LATEST=2.13.1
+VERSIONS_FILE="versions.txt"
+
+declare -a versions="$(cat $VERSIONS_FILE)"
 
 generate_standard() {
-  sed -e "s/<version>/$1/g" dockerfile/standard.template >"$1/Dockerfile"
+  sed -e "s/<version>/$1/g" templates/dockerfile/standard.template >"$1/Dockerfile"
 }
 
 generate_alpine() {
   cp -R base/alpine "$1/alpine"
-  sed -e "s/<version>/$1/g" dockerfile/alpine.template >"$1/alpine/Dockerfile"
+  sed -e "s/<version>/$1/g" templates/dockerfile/alpine.template >"$1/alpine/Dockerfile"
 }
 
 update() {
@@ -21,12 +26,30 @@ update() {
     generate_standard "${version}"
     generate_alpine "${version}"
   done <<<"$versions"
+  generate_travis_yml
+  generate_readme
+}
+
+update_list() {
+  if [[ -z $1 ]]; then
+    # nothing specified
+    TARGET="$VERSIONS_FILE"
+  else
+    TARGET="$1"
+  fi
+  echo "Saving new list to $TARGET"
+  wget --timeout=5 -O - -q "https://scala-lang.org/download/all.html" | xmllint --html --xpath '//div[@class="inner-box"]' - 2>/dev/null | xmlstarlet sel -t -v 'div/div/a/text()' - | sed -e 's/Scala //' >"$TARGET"
 }
 
 print_for_travis() {
   while IFS= read -r version; do
     echo "  - VERSION=${version}"
   done <<<"$versions"
+}
+
+generate_travis_yml() {
+  vs="$(print_for_travis)"
+  awk -v v="$vs" '{gsub(/<versions>/,v)}1' "templates/.travis.yml.template" >".travis.yml"
 }
 
 print_for_readme() {
@@ -36,6 +59,11 @@ print_for_readme() {
     folder="$(get_docker_folder "$version" 1)"
     echo "- [\`$version-alpine\`($folder/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/$folder/Dockerfile)"
   done <<<"$versions"
+}
+
+generate_readme() {
+  vs="$(print_for_readme)"
+  awk -v v="$vs" '{gsub(/<prev_versions>/,v)}1' "templates/README.md.template" >"README.md"
 }
 
 # $1 version
@@ -148,20 +176,19 @@ versions_to_docker() {
   done <<<"$versions"
 }
 
-DOCKER_ACC=marnikow
-DOCKER_REPO=scala
-DOCKER_LATEST=2.13.1
-
 if [[ -z $1 ]]; then
   # nothing specified
   update
   exit 0
 else
-  if [[ $1 == "ptravis" ]]; then
-    print_for_travis
+  if [[ $1 == "update-list" ]]; then
+    update_list "$2"
     exit 0
-  elif [[ $1 == "preadme" ]]; then
-    print_for_readme
+  elif [[ $1 == "travis-yml" ]]; then
+    generate_travis_yml
+    exit 0
+  elif [[ $1 == "readme-md" ]]; then
+    generate_readme
     exit 0
   elif [[ $1 == "docker" ]]; then
     echo "Dockering"
