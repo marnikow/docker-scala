@@ -29,6 +29,15 @@ print_for_travis() {
   done <<<"$versions"
 }
 
+print_for_readme() {
+  while IFS= read -r version; do
+    folder="$(get_docker_folder "$version")"
+    echo "- [\`$version\`($folder/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/$folder/Dockerfile)"
+    folder="$(get_docker_folder "$version" 1)"
+    echo "- [\`$version-alpine\`($folder/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/$folder/Dockerfile)"
+  done <<<"$versions"
+}
+
 # $1 version
 # $2 is it alpine
 get_docker_folder() {
@@ -150,6 +159,9 @@ if [[ -z $1 ]]; then
 else
   if [[ $1 == "ptravis" ]]; then
     print_for_travis
+    exit 0
+  elif [[ $1 == "preadme" ]]; then
+    print_for_readme
     exit 0
   elif [[ $1 == "docker" ]]; then
     echo "Dockering"
