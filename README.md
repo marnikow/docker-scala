@@ -1,5 +1,5 @@
-![Docker Pulls](https://img.shields.io/docker/pulls/marnikow/scala.svg)
-![Docker Stars](https://img.shields.io/docker/stars/marnikow/scala.svg)
+[![Docker Pulls](https://img.shields.io/docker/pulls/marnikow/scala.svg)](https://hub.docker.com/r/marnikow/scala/)
+[![Docker Stars](https://img.shields.io/docker/stars/marnikow/scala.svg)](https://hub.docker.com/r/marnikow/scala/)
 
 [![Build Status](https://travis-ci.com/marnikow/docker-scala.svg?branch=master)](https://travis-ci.com/marnikow/docker-scala)
 [![License](https://img.shields.io/github/license/marnikow/docker-scala.svg)](https://raw.githubusercontent.com/marnikow/docker-scala/master/LICENSE)
