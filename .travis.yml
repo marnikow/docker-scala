@@ -62,4 +62,4 @@ env:
 
 script:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - ./update.sh travis CI ${VERSION}
+  - ./update.sh travis ${VERSION}

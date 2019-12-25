@@ -7,38 +7,51 @@ DOCKER_REPO=scala
 DOCKER_LATEST=2.13.1
 VERSIONS_FILE="versions.txt"
 
-declare -a versions="$(cat $VERSIONS_FILE)"
+versions="$(cat $VERSIONS_FILE)"
 
-generate_standard() {
-  sed -e "s/<version>/$1/g" templates/dockerfile/standard.template >"$1/Dockerfile"
-}
-
-generate_alpine() {
-  cp -R base/alpine "$1/alpine"
-  sed -e "s/<version>/$1/g" templates/dockerfile/alpine.template >"$1/alpine/Dockerfile"
-}
-
-update() {
-  while IFS= read -r version; do
-    rm -rf "${version}"
-    mkdir "${version}"
-
-    generate_standard "${version}"
-    generate_alpine "${version}"
-  done <<<"$versions"
-  generate_travis_yml
-  generate_readme
-}
-
-update_list() {
-  if [[ -z $1 ]]; then
-    # nothing specified
-    TARGET="$VERSIONS_FILE"
+# $1 version
+# $2 is it alpine
+get_folder() {
+  if [[ $2 -eq 0 ]]; then
+    FOLDER="$1"
   else
-    TARGET="$1"
+    FOLDER="$1"/alpine
   fi
-  echo "Saving new list to $TARGET"
-  wget --timeout=5 -O - -q "https://scala-lang.org/download/all.html" | xmllint --html --xpath '//div[@class="inner-box"]' - 2>/dev/null | xmlstarlet sel -t -v 'div/div/a/text()' - | sed -e 's/Scala //' >"$TARGET"
+  echo "$FOLDER"
+}
+
+# $1 version
+# $2 is it alpine
+get_tag() {
+  if [[ $2 -eq 0 ]]; then
+    TAG="$1"
+  else
+    TAG="$1-alpine"
+  fi
+  echo "$TAG"
+}
+
+# $1 version
+# $2 is it alpine
+get_full_tag() {
+  echo "$DOCKER_ACC/$DOCKER_REPO:$(get_tag "$1" "$2")"
+}
+
+# $1 version
+# $2 is it alpine
+generate() {
+  echo "Generating Dockerfile for Scala v$1 ($2)"
+  FOLDER="$(get_folder "$1" "$2")"
+  if [[ $2 -eq 0 ]]; then
+    TEMPLATE="templates/dockerfile/standard.template"
+  else
+    TEMPLATE="templates/dockerfile/alpine.template"
+    cp -R "base/alpine" "$FOLDER"
+  fi
+
+  mkdir -p "$FOLDER"
+
+  sed -e "s/<version>/$1/g" "$TEMPLATE" >"$FOLDER/Dockerfile"
 }
 
 print_for_travis() {
@@ -54,58 +67,60 @@ generate_travis_yml() {
 
 print_for_readme() {
   while IFS= read -r version; do
-    folder="$(get_docker_folder "$version")"
-    echo "- [\`$version\`($folder/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/$folder/Dockerfile)"
-    folder="$(get_docker_folder "$version" 1)"
-    echo "- [\`$version-alpine\`($folder/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/$folder/Dockerfile)"
+    folder="$(get_folder "$version")"
+    tag="$(get_tag "$version")"
+    echo "- [\`$tag\`($folder/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/$folder/Dockerfile)"
+    folder="$(get_folder "$version" 1)"
+    tag="$(get_tag "$version" 1)"
+    echo "- [\`$tag\`($folder/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/$folder/Dockerfile)"
   done <<<"$versions"
 }
 
-generate_readme() {
+generate_readme_md() {
   vs="$(print_for_readme)"
   awk -v v="$vs" '{gsub(/<prev_versions>/,v)}1' "templates/README.md.template" >"README.md"
 }
 
-# $1 version
-# $2 is it alpine
-get_docker_folder() {
-  if [[ $2 -eq 0 ]]; then
-    FOLDER="$1"
-  else
-    FOLDER="$1"/alpine
-  fi
-  echo "$FOLDER"
+update() {
+  while IFS= read -r version; do
+    rm -rf "$(get_folder "$version")"
+    generate "$version"
+    generate "$version" 1
+  done <<<"$versions"
+  generate_travis_yml
+  generate_readme_md
 }
 
-# $1 version
-# $2 is it alpine
-get_docker_tag() {
-  if [[ $2 -eq 0 ]]; then
-    TAG="$DOCKER_ACC/$DOCKER_REPO:$1"
+# $1 optional target file
+update_list() {
+  if [[ -z $1 ]]; then
+    # nothing specified
+    TARGET="$VERSIONS_FILE"
   else
-    TAG="$DOCKER_ACC/$DOCKER_REPO:$1-alpine"
+    TARGET="$1"
   fi
-  echo "$TAG"
+  echo "Saving new list to $TARGET"
+  wget --timeout=5 -O - -q "https://scala-lang.org/download/all.html" | xmllint --html --xpath '//div[@class="inner-box"]' - 2>/dev/null | xmlstarlet sel -t -v 'div/div/a/text()' - | sed -e 's/Scala //' >"$TARGET"
 }
 
 # $1 version
 # $2 is it alpine
 pull_docker_version() {
-  TAG="$(get_docker_tag "$1" "$2")"
+  TAG="$(get_full_tag "$1" "$2")"
   docker pull "$TAG"
 }
 
 # $1 version
 # $2 is it alpine
 build_docker_version() {
-  TAG="$(get_docker_tag "$1" "$2")"
-  FOLDER="$(get_docker_folder "$1" "$2")"
+  TAG="$(get_full_tag "$1" "$2")"
+  FOLDER="$(get_folder "$1" "$2")"
   docker build -t "$TAG" "$FOLDER"
   if [[ "$DOCKER_LATEST" == "$1" ]]; then
     if [[ $2 -eq 0 ]]; then
-      TAG_LATEST="$(get_docker_tag "alpine")"
+      TAG_LATEST="$DOCKER_ACC/$DOCKER_REPO:latest"
     else
-      TAG_LATEST="$(get_docker_tag "latest")"
+      TAG_LATEST="$DOCKER_ACC/$DOCKER_REPO:alpine"
     fi
     docker tag "$TAG" "$TAG_LATEST"
   fi
@@ -114,7 +129,7 @@ build_docker_version() {
 # $1 version
 # $2 is it alpine
 test_docker_version() {
-  TAG="$(get_docker_tag "$1" "$2")"
+  TAG="$(get_full_tag "$1" "$2")"
   echo "Testing $TAG"
   if (tests/scala.sh "$TAG" && tests/scalac.sh "$TAG"); then
     echo "Testing $TAG succeeded"
@@ -128,14 +143,14 @@ test_docker_version() {
 # $1 version
 # $2 is it alpine
 push_docker_version() {
-  TAG="$(get_docker_tag "$1" "$2")"
+  TAG="$(get_full_tag "$1" "$2")"
   docker push "$TAG"
 }
 
 # $1 version
 # $2 is it alpine
 has_docker_image() {
-  TAG="$(get_docker_tag "$1" "$2")"
+  TAG="$(get_full_tag "$1" "$2")"
   if [[ "$(docker images -q "$TAG" 2>/dev/null)" == "" ]]; then
     false
   else
@@ -170,9 +185,9 @@ check_and_push_docker_versions() {
 }
 
 versions_to_docker() {
-  docker pull -a "$DOCKER_ACC"/"$DOCKER_REPO"
+  #  docker pull -a "$DOCKER_ACC"/"$DOCKER_REPO"
   while IFS= read -r version; do
-    check_and_push_docker_versions "${version}"
+    check_and_push_docker_versions "$version"
   done <<<"$versions"
 }
 
@@ -183,47 +198,46 @@ if [[ -z $1 ]]; then
 else
   if [[ $1 == "update-list" ]]; then
     update_list "$2"
-    exit 0
+    exit $?
   elif [[ $1 == "travis-yml" ]]; then
     generate_travis_yml
-    exit 0
+    exit $?
   elif [[ $1 == "readme-md" ]]; then
-    generate_readme
-    exit 0
-  elif [[ $1 == "docker" ]]; then
-    echo "Dockering"
-    versions_to_docker
-    exit 0
-  elif [[ $1 == "tag" ]]; then
-    get_docker_tag "$2" "$3"
-    exit 0
+    generate_readme_md
+    exit $?
   elif [[ $1 == "folder" ]]; then
-    get_docker_folder "$2" "$3"
-    exit 0
+    get_folder "$2" "$3"
+    exit $?
+  elif [[ $1 == "tag" ]]; then
+    get_tag "$2" "$3"
+    exit $?
+  elif [[ $1 == "full-tag" ]]; then
+    get_full_tag "$2" "$3"
+    exit $?
+  elif [[ $1 == "pull" ]]; then
+    echo "Pulling v$2 ($3)"
+    pull_docker_version "$2" "$3"
+    exit $?
+  elif [[ $1 == "build" ]]; then
+    echo "Building v$2 ($3)"
+    build_docker_version "$2" "$3"
+    exit $?
+  elif [[ $1 == "test" ]]; then
+    echo "Testing v$2 ($3)"
+    test_docker_version "$2" "$3"
+    exit $?
+  elif [[ $1 == "push" ]]; then
+    echo "Pushing v$2 ($3)"
+    push_docker_version "$2" "$3"
+    exit $?
+  elif [[ $1 == "docker" ]]; then
+    echo "Pushing all new versions to Docker"
+    versions_to_docker
+    exit $?
   elif [[ $1 == "travis" ]]; then
-    if [[ $2 == "CI" ]]; then
-      echo "Checking, building, testing and pushing v$3 from travis"
-      check_and_push_docker_versions "$3"
-      exit $?
-    elif [[ $2 == "pull" ]]; then
-      echo "Pulling v$3 ($4) from travis"
-      pull_docker_version "$3" "$4"
-      exit $?
-    elif [[ $2 == "build" ]]; then
-      echo "Building v$3 ($4) from travis"
-      build_docker_version "$3" "$4"
-      exit 0
-    elif [[ $2 == "test" ]]; then
-      echo "Testing v$3 ($4) from travis"
-      test_docker_version "$3" "$4"
-      exit $?
-    elif [[ $2 == "push" ]]; then
-      echo "Pushing v$3 ($4) from travis"
-      push_docker_version "$3" "$4"
-      exit $?
-    fi
-    echo "Second arg not understood"
-    exit 3
+    echo "Checking, building, testing and pushing v$2"
+    check_and_push_docker_versions "$2"
+    exit $?
   fi
   echo "First arg not understood"
   exit 2
