@@ -6,11 +6,11 @@ services:
   - docker
 
 env:
+  - VERSION=2.13.1
   - VERSION=2.13.0-M1
   - VERSION=2.13.0-M2
   - VERSION=2.13.0-M3
   - VERSION=2.13.0-M4
-  - VERSION=2.13.1
   - VERSION=2.12.0-M1
   - VERSION=2.12.0-M2
   - VERSION=2.12.0-M3

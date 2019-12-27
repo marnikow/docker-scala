@@ -4,9 +4,9 @@ set -eo pipefail
 
 DOCKER_ACC=marnikow
 DOCKER_REPO=scala
-DOCKER_LATEST=2.13.1
 VERSIONS_FILE="versions.txt"
 
+read -r DOCKER_LATEST < "$VERSIONS_FILE"
 versions="$(cat $VERSIONS_FILE)"
 
 # $1 version
@@ -116,6 +116,12 @@ build_docker_version() {
   TAG="$(get_full_tag "$1" "$2")"
   FOLDER="$(get_folder "$1" "$2")"
   docker build -t "$TAG" "$FOLDER"
+}
+
+# $1 version
+# $2 is it alpine
+check_for_latest_and_tag() {
+  TAG="$(get_full_tag "$1" "$2")"
   if [[ "$DOCKER_LATEST" == "$1" ]]; then
     if [[ $2 -eq 0 ]]; then
       TAG_LATEST="$DOCKER_ACC/$DOCKER_REPO:latest"
@@ -123,6 +129,7 @@ build_docker_version() {
       TAG_LATEST="$DOCKER_ACC/$DOCKER_REPO:alpine"
     fi
     docker tag "$TAG" "$TAG_LATEST"
+    docker push "$TAG_LATEST"
   fi
 }
 
@@ -163,15 +170,20 @@ has_docker_image() {
 check_and_push_docker() {
   pull_docker_version "$1" "$2" || true
   if ! (has_docker_image "$1" "$2"); then
-    echo "Building"
+    echo "Building Dockerfile for Scala v$2 ($3)"
     build_docker_version "$1" "$2"
     if (test_docker_version "$1" "$2"); then
       push_docker_version "$1" "$2"
+      check_for_latest_and_tag "$1" "$2"
     else
       false
     fi
   else
-    test_docker_version "$1" "$2"
+    if (test_docker_version "$1" "$2"); then
+      check_for_latest_and_tag "$1" "$2"
+    else
+      false
+    fi
   fi
 }
 
@@ -189,6 +201,12 @@ versions_to_docker() {
   while IFS= read -r version; do
     check_and_push_docker_versions "$version"
   done <<<"$versions"
+}
+
+print_info() {
+  echo "Using \"$DOCKER_ACC/$DOCKER_REPO\" as docker repo"
+  echo "Latest version: $DOCKER_LATEST"
+  echo "Using \"$VERSIONS_FILE\" for versions"
 }
 
 if [[ -z $1 ]]; then
@@ -233,6 +251,9 @@ else
   elif [[ $1 == "docker" ]]; then
     echo "Pushing all new versions to Docker"
     versions_to_docker
+    exit $?
+  elif [[ $1 == "info" ]]; then
+    print_info
     exit $?
   elif [[ $1 == "travis" ]]; then
     echo "Checking, building, testing and pushing v$2"
