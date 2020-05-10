@@ -49,6 +49,8 @@ The different versions of this image correspond tho the released versions of Sca
 If the tests fail for a version the corresponding docker file will not be updated.
 
 ### Previous Versions
+- [`2.13.2`(2.13.2/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.2/Dockerfile)
+- [`2.13.2-alpine`(2.13.2/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.2/alpine/Dockerfile)
 - [`2.13.1`(2.13.1/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.1/Dockerfile)
 - [`2.13.1-alpine`(2.13.1/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.1/alpine/Dockerfile)
 - [`2.13.0-M1`(2.13.0-M1/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-M1/Dockerfile)
@@ -59,6 +61,16 @@ If the tests fail for a version the corresponding docker file will not be update
 - [`2.13.0-M3-alpine`(2.13.0-M3/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-M3/alpine/Dockerfile)
 - [`2.13.0-M4`(2.13.0-M4/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-M4/Dockerfile)
 - [`2.13.0-M4-alpine`(2.13.0-M4/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-M4/alpine/Dockerfile)
+- [`2.13.0-M5`(2.13.0-M5/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-M5/Dockerfile)
+- [`2.13.0-M5-alpine`(2.13.0-M5/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-M5/alpine/Dockerfile)
+- [`2.13.0-RC1`(2.13.0-RC1/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-RC1/Dockerfile)
+- [`2.13.0-RC1-alpine`(2.13.0-RC1/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-RC1/alpine/Dockerfile)
+- [`2.13.0-RC2`(2.13.0-RC2/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-RC2/Dockerfile)
+- [`2.13.0-RC2-alpine`(2.13.0-RC2/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-RC2/alpine/Dockerfile)
+- [`2.13.0-RC3`(2.13.0-RC3/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-RC3/Dockerfile)
+- [`2.13.0-RC3-alpine`(2.13.0-RC3/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0-RC3/alpine/Dockerfile)
+- [`2.13.0`(2.13.0/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0/Dockerfile)
+- [`2.13.0-alpine`(2.13.0/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.13.0/alpine/Dockerfile)
 - [`2.12.0-M1`(2.12.0-M1/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.12.0-M1/Dockerfile)
 - [`2.12.0-M1-alpine`(2.12.0-M1/alpine/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.12.0-M1/alpine/Dockerfile)
 - [`2.12.0-M2`(2.12.0-M2/Dockerfile)](https://github.com/marnikow/docker-scala/blob/master/2.12.0-M2/Dockerfile)
